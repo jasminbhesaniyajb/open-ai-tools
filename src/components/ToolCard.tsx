@@ -1,0 +1,63 @@
+import Link from "next/link";
+import type { Tool } from "@/data/tools";
+import { getCategory } from "@/data/tools";
+import PricingBadge from "./PricingBadge";
+
+// Deterministic gradient per tool so avatars stay stable across renders.
+const GRADIENTS = [
+  "from-indigo-500 to-cyan-400",
+  "from-violet-500 to-fuchsia-400",
+  "from-sky-500 to-emerald-400",
+  "from-rose-500 to-orange-400",
+  "from-amber-500 to-lime-400",
+  "from-purple-500 to-sky-400",
+];
+
+function gradientFor(slug: string): string {
+  let hash = 0;
+  for (const ch of slug) hash = (hash * 31 + ch.charCodeAt(0)) % 997;
+  return GRADIENTS[hash % GRADIENTS.length];
+}
+
+export default function ToolCard({ tool }: { tool: Tool }) {
+  const category = getCategory(tool.category);
+  return (
+    <article className="group relative flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-400/40 hover:bg-white/[0.06] hover:shadow-lg hover:shadow-indigo-500/10">
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span
+            aria-hidden="true"
+            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-lg font-bold text-white ${gradientFor(tool.slug)}`}
+          >
+            {tool.name.charAt(0)}
+          </span>
+          <div>
+            <h3 className="font-semibold text-white">
+              <Link href={`/tools/${tool.slug}`} className="focus:outline-none">
+                {/* Stretched link makes the whole card clickable */}
+                <span className="absolute inset-0" aria-hidden="true" />
+                {tool.name}
+              </Link>
+            </h3>
+            <p className="text-xs text-slate-400">
+              {category?.icon} {category?.name}
+            </p>
+          </div>
+        </div>
+        <PricingBadge pricing={tool.pricing} />
+      </div>
+
+      <p className="line-clamp-2 text-sm leading-relaxed text-slate-300">{tool.tagline}</p>
+
+      <div className="mt-auto flex items-center justify-between pt-1 text-xs text-slate-400">
+        <span className="inline-flex items-center gap-1">
+          <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 text-amber-400" aria-hidden="true">
+            <path d="M10 1.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L10 14.9l-5.3 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z" />
+          </svg>
+          {tool.rating.toFixed(1)}
+        </span>
+        <span className="font-medium text-indigo-300 transition-colors group-hover:text-indigo-200">View tool →</span>
+      </div>
+    </article>
+  );
+}
