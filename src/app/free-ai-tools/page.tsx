@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import FaqSection from "@/components/FaqSection";
 import JsonLd from "@/components/JsonLd";
 import ToolCard from "@/components/ToolCard";
@@ -55,14 +56,15 @@ export default function FreeAiToolsPage() {
         }}
       />
 
+      <Breadcrumbs items={[{ name: "Free AI tools" }]} />
       <header className="mb-12 max-w-3xl">
-        <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
           The best <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">free AI tools</span> in 2026
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-slate-400">
+        <p className="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
           {FREE_TOOLS.length}+ AI tools you can start using today without spending a cent. Everything here is free or has a genuinely useful free tier — organized
           by category so you can find what you need fast. Looking for premium options instead? See our{" "}
-          <Link href="/paid-ai-tools" className="text-indigo-300 underline decoration-indigo-400/40 hover:text-indigo-200">
+          <Link href="/paid-ai-tools" className="text-indigo-600 underline decoration-indigo-500/40 hover:text-indigo-500 dark:text-indigo-300 dark:decoration-indigo-400/40 dark:hover:text-indigo-200">
             paid AI tools guide
           </Link>
           .
@@ -76,10 +78,10 @@ export default function FreeAiToolsPage() {
         return (
           <section key={category.slug} aria-labelledby={`free-${category.slug}`} className="mb-12">
             <div className="mb-5 flex items-end justify-between">
-              <h2 id={`free-${category.slug}`} className="text-xl font-bold text-white">
+              <h2 id={`free-${category.slug}`} className="text-xl font-bold text-slate-900 dark:text-white">
                 <span aria-hidden="true">{category.icon}</span> Free AI tools for {category.name.toLowerCase()}
               </h2>
-              <Link href={`/category/${category.slug}`} className="text-sm text-indigo-300 hover:text-indigo-200">
+              <Link href={`/category/${category.slug}`} className="text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200">
                 All {category.name.toLowerCase()} →
               </Link>
             </div>
@@ -92,7 +94,7 @@ export default function FreeAiToolsPage() {
         );
       })}
 
-      <div className="border-t border-white/10 pt-14">
+      <div className="border-t border-slate-200 pt-14 dark:border-white/10">
         <FaqSection items={FAQ_ITEMS} heading="Free AI tools — FAQ" />
       </div>
     </div>

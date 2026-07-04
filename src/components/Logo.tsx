@@ -1,4 +1,4 @@
-// Brand mark: an open toolbox with an AI spark rising out of it — "Open AI Tools".
+// Brand mark: an open toolbox with an AI spark rising out of it (AI Tool Atlas).
 export default function Logo({ size = 32 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true">

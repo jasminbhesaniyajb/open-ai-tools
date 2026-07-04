@@ -38,10 +38,16 @@ export const metadata: Metadata = {
   },
 };
 
+// Applies the saved (or system) theme before first paint to avoid a flash of the wrong theme.
+const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.classList.toggle("dark",d);}catch(e){}})();`;
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-slate-950 text-slate-200 antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-slate-50 text-slate-700 antialiased dark:bg-slate-950 dark:text-slate-200`}>
         <JsonLd
           data={{
             "@context": "https://schema.org",
@@ -49,11 +55,22 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             name: SITE.name,
             url: SITE.url,
             description: SITE.description,
+            publisher: { "@id": absoluteUrl("/#organization") },
             potentialAction: {
               "@type": "SearchAction",
               target: { "@type": "EntryPoint", urlTemplate: absoluteUrl("/tools?q={search_term_string}") },
               "query-input": "required name=search_term_string",
             },
+          }}
+        />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": absoluteUrl("/#organization"),
+            name: SITE.name,
+            url: SITE.url,
+            logo: { "@type": "ImageObject", url: absoluteUrl("/icon.svg") },
           }}
         />
         <Header />

@@ -15,7 +15,7 @@ const FAQ_ITEMS = [
       "Free tools cost nothing to use. Freemium tools offer a genuinely useful free tier with paid upgrades for higher limits or advanced features — most popular AI tools follow this model. Paid tools require a subscription from day one, and free-trial tools let you test everything for a limited time before paying.",
   },
   {
-    question: "How do you choose the tools listed on Open AI Tools?",
+    question: "How do you choose the tools listed on AI Tool Atlas?",
     answer:
       "We curate tools based on real-world popularity, output quality, active development, and value for money. Every listing includes an honest summary, key features, and current pricing model, so you can decide quickly whether a tool fits your workflow.",
   },
@@ -38,16 +38,16 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="aurora relative overflow-hidden border-b border-white/5">
+      <section className="aurora relative overflow-hidden border-b border-slate-200 dark:border-white/5">
         <div className="mx-auto max-w-7xl px-4 pb-20 pt-16 text-center sm:px-6 sm:pt-24">
-          <p className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-1.5 text-sm text-indigo-300">
+          <p className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-400/40 bg-indigo-500/10 px-4 py-1.5 text-sm text-indigo-700 dark:border-indigo-400/30 dark:text-indigo-300">
             <span aria-hidden="true">✨</span> {TOOLS.length}+ curated tools · {CATEGORIES.length} categories · updated for 2026
           </p>
-          <h1 className="mx-auto max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
+          <h1 className="mx-auto max-w-3xl text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-6xl">
             Discover the best{" "}
             <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">AI tools</span> for every task
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-400">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">
             A hand-curated directory of free and paid AI tools — chat assistants, image and video generators, coding copilots, writing aids, and more. Honest
             summaries. Clear pricing. No fluff.
           </p>
@@ -60,7 +60,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/free-ai-tools"
-              className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+              className="rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-100 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
             >
               Free AI tools →
             </Link>
@@ -72,12 +72,12 @@ export default function HomePage() {
       <section aria-labelledby="featured-heading" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <h2 id="featured-heading" className="text-2xl font-bold text-white sm:text-3xl">
+            <h2 id="featured-heading" className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
               Featured AI tools
             </h2>
-            <p className="mt-1 text-slate-400">Editor&rsquo;s picks — the tools defining each category right now.</p>
+            <p className="mt-1 text-slate-600 dark:text-slate-400">Editor&rsquo;s picks — the tools defining each category right now.</p>
           </div>
-          <Link href="/tools" className="hidden text-sm font-medium text-indigo-300 hover:text-indigo-200 sm:block">
+          <Link href="/tools" className="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200 sm:block">
             View all →
           </Link>
         </div>
@@ -89,27 +89,27 @@ export default function HomePage() {
       </section>
 
       {/* ── Categories ── */}
-      <section id="categories" aria-labelledby="categories-heading" className="border-y border-white/5 bg-white/[0.02]">
+      <section id="categories" aria-labelledby="categories-heading" className="border-y border-slate-200 bg-slate-100/60 dark:border-white/5 dark:bg-white/[0.02]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-          <h2 id="categories-heading" className="text-2xl font-bold text-white sm:text-3xl">
+          <h2 id="categories-heading" className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
             Browse by category
           </h2>
-          <p className="mt-1 text-slate-400">Jump straight to the type of AI tool you need.</p>
+          <p className="mt-1 text-slate-600 dark:text-slate-400">Jump straight to the type of AI tool you need.</p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {CATEGORIES.map((category) => (
               <Link
                 key={category.slug}
                 href={`/category/${category.slug}`}
-                className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 transition-all hover:border-indigo-400/40 hover:bg-white/[0.06]"
+                className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-sm transition-all hover:border-indigo-400/50 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:hover:border-indigo-400/40 dark:hover:bg-white/[0.06]"
               >
                 <span aria-hidden="true" className="text-2xl">
                   {category.icon}
                 </span>
                 <span className="flex-1">
-                  <span className="block font-medium text-white group-hover:text-indigo-200">{category.name}</span>
+                  <span className="block font-medium text-slate-900 group-hover:text-indigo-600 dark:text-white dark:group-hover:text-indigo-200">{category.name}</span>
                   <span className="text-xs text-slate-500">{categoryCount(category.slug)} tools</span>
                 </span>
-                <span aria-hidden="true" className="text-slate-600 transition-transform group-hover:translate-x-0.5 group-hover:text-indigo-300">
+                <span aria-hidden="true" className="text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-indigo-600 dark:text-slate-600 dark:group-hover:text-indigo-300">
                   →
                 </span>
               </Link>
@@ -122,12 +122,12 @@ export default function HomePage() {
       <section aria-labelledby="free-heading" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <h2 id="free-heading" className="text-2xl font-bold text-white sm:text-3xl">
+            <h2 id="free-heading" className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
               Start free — no credit card needed
             </h2>
-            <p className="mt-1 text-slate-400">Powerful AI tools with genuinely useful free tiers.</p>
+            <p className="mt-1 text-slate-600 dark:text-slate-400">Powerful AI tools with genuinely useful free tiers.</p>
           </div>
-          <Link href="/free-ai-tools" className="hidden text-sm font-medium text-indigo-300 hover:text-indigo-200 sm:block">
+          <Link href="/free-ai-tools" className="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200 sm:block">
             All free tools →
           </Link>
         </div>
@@ -137,14 +137,14 @@ export default function HomePage() {
           ))}
         </div>
         <div className="mt-8 text-center sm:hidden">
-          <Link href="/free-ai-tools" className="text-sm font-medium text-indigo-300 hover:text-indigo-200">
+          <Link href="/free-ai-tools" className="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200">
             All free tools →
           </Link>
         </div>
       </section>
 
       {/* ── FAQ ── */}
-      <section className="border-t border-white/5 bg-white/[0.02] px-4 py-16 sm:px-6">
+      <section className="border-t border-slate-200 bg-slate-100/60 dark:border-white/5 dark:bg-white/[0.02] px-4 py-16 sm:px-6">
         <FaqSection items={FAQ_ITEMS} />
       </section>
     </>

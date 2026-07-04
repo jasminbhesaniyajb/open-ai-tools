@@ -1,4 +1,4 @@
-# Open AI Tools
+# AI Tool Atlas
 
 A curated directory of the best free & paid AI tools — built with Next.js 16, React 19, and Tailwind CSS 4. Fully static (SSG), SEO-first.
 

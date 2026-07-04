@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import FaqSection from "@/components/FaqSection";
 import JsonLd from "@/components/JsonLd";
 import ToolCard from "@/components/ToolCard";
@@ -55,14 +56,15 @@ export default function PaidAiToolsPage() {
         }}
       />
 
+      <Breadcrumbs items={[{ name: "Paid AI tools" }]} />
       <header className="mb-12 max-w-3xl">
-        <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
           The best <span className="bg-gradient-to-r from-amber-400 to-rose-400 bg-clip-text text-transparent">paid AI tools</span> worth the money
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-slate-400">
+        <p className="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
           Premium AI software delivers where free tiers stop: commercial licensing, studio-grade output, and enterprise features. These {PAID_TOOLS.length} tools
           earn their subscription. On a budget? Start with our{" "}
-          <Link href="/free-ai-tools" className="text-indigo-300 underline decoration-indigo-400/40 hover:text-indigo-200">
+          <Link href="/free-ai-tools" className="text-indigo-600 underline decoration-indigo-500/40 hover:text-indigo-500 dark:text-indigo-300 dark:decoration-indigo-400/40 dark:hover:text-indigo-200">
             free AI tools guide
           </Link>
           .
@@ -75,10 +77,10 @@ export default function PaidAiToolsPage() {
         return (
           <section key={category.slug} aria-labelledby={`paid-${category.slug}`} className="mb-12">
             <div className="mb-5 flex items-end justify-between">
-              <h2 id={`paid-${category.slug}`} className="text-xl font-bold text-white">
+              <h2 id={`paid-${category.slug}`} className="text-xl font-bold text-slate-900 dark:text-white">
                 <span aria-hidden="true">{category.icon}</span> Paid AI tools for {category.name.toLowerCase()}
               </h2>
-              <Link href={`/category/${category.slug}`} className="text-sm text-indigo-300 hover:text-indigo-200">
+              <Link href={`/category/${category.slug}`} className="text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200">
                 All {category.name.toLowerCase()} →
               </Link>
             </div>
@@ -91,7 +93,7 @@ export default function PaidAiToolsPage() {
         );
       })}
 
-      <div className="border-t border-white/10 pt-14">
+      <div className="border-t border-slate-200 pt-14 dark:border-white/10">
         <FaqSection items={FAQ_ITEMS} heading="Paid AI tools — FAQ" />
       </div>
     </div>

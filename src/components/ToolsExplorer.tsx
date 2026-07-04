@@ -55,7 +55,7 @@ export default function ToolsExplorer({ tools, initialCategory = "all" }: { tool
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search AI tools…"
             aria-label="Search AI tools"
-            className="w-full rounded-xl border border-white/10 bg-white/5 py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-slate-500 focus:border-indigo-400/60 focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
+            className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-indigo-400/60 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500"
           />
         </div>
 
@@ -63,7 +63,7 @@ export default function ToolsExplorer({ tools, initialCategory = "all" }: { tool
           value={category}
           onChange={(event) => setCategory(event.target.value)}
           aria-label="Filter by category"
-          className="rounded-xl border border-white/10 bg-slate-900 px-3 py-2.5 text-sm text-slate-200 focus:border-indigo-400/60 focus:outline-none"
+          className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 focus:border-indigo-400/60 focus:outline-none dark:border-white/10 dark:bg-slate-900 dark:text-slate-200"
         >
           <option value="all">All categories</option>
           {CATEGORIES.map((item) => (
@@ -82,7 +82,7 @@ export default function ToolsExplorer({ tools, initialCategory = "all" }: { tool
             type="button"
             onClick={() => setPricing(filter.value)}
             className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-              pricing === filter.value ? "bg-indigo-500 text-white shadow shadow-indigo-500/30" : "border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10"
+              pricing === filter.value ? "bg-indigo-500 text-white shadow shadow-indigo-500/30" : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:bg-white/10"
             }`}
           >
             {filter.label}
@@ -101,9 +101,9 @@ export default function ToolsExplorer({ tools, initialCategory = "all" }: { tool
           ))}
         </div>
       ) : (
-        <div className="rounded-2xl border border-dashed border-white/10 p-12 text-center">
-          <p className="text-lg font-medium text-white">No tools match your filters</p>
-          <p className="mt-1 text-sm text-slate-400">Try a different search term or clear the filters.</p>
+        <div className="rounded-2xl border border-dashed border-slate-300 p-12 text-center dark:border-white/10">
+          <p className="text-lg font-medium text-slate-900 dark:text-white">No tools match your filters</p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Try a different search term or clear the filters.</p>
         </div>
       )}
     </div>

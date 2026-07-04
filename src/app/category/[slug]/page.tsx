@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import ToolCard from "@/components/ToolCard";
 import { CATEGORIES, getCategory, getToolsByCategory } from "@/data/tools";
-import { SITE, absoluteUrl } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
 
 interface Params {
   slug: string;
@@ -53,36 +54,13 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
           })),
         }}
       />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
-            { "@type": "ListItem", position: 2, name: category.name, item: absoluteUrl(`/category/${slug}`) },
-          ],
-        }}
-      />
-
-      <nav aria-label="Breadcrumb" className="mb-8 text-sm text-slate-500">
-        <ol className="flex items-center gap-1.5">
-          <li>
-            <Link href="/" className="hover:text-slate-300">
-              Home
-            </Link>
-          </li>
-          <li aria-hidden="true">/</li>
-          <li aria-current="page" className="text-slate-300">
-            {category.name}
-          </li>
-        </ol>
-      </nav>
+      <Breadcrumbs items={[{ name: category.name }]} />
 
       <header className="mb-10">
-        <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
           <span aria-hidden="true">{category.icon}</span> Best {category.name.toLowerCase()} AI tools
         </h1>
-        <p className="mt-2 max-w-2xl text-slate-400">
+        <p className="mt-2 max-w-2xl text-slate-600 dark:text-slate-400">
           {category.blurb} We compare {tools.length} standout tools below — including free options.
         </p>
       </header>
@@ -94,8 +72,8 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
       </div>
 
       {/* Cross-category internal links */}
-      <section aria-labelledby="more-categories" className="mt-16 border-t border-white/10 pt-10">
-        <h2 id="more-categories" className="text-lg font-bold text-white">
+      <section aria-labelledby="more-categories" className="mt-16 border-t border-slate-200 pt-10 dark:border-white/10">
+        <h2 id="more-categories" className="text-lg font-bold text-slate-900 dark:text-white">
           Explore more categories
         </h2>
         <div className="mt-4 flex flex-wrap gap-2">
@@ -103,7 +81,7 @@ export default async function CategoryPage({ params }: { params: Promise<Params>
             <Link
               key={item.slug}
               href={`/category/${item.slug}`}
-              className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-slate-300 transition-colors hover:border-indigo-400/40 hover:text-white"
+              className="rounded-full border border-slate-200 bg-white px-4 py-1.5 text-sm text-slate-600 transition-colors hover:border-indigo-400/50 hover:text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-indigo-400/40 dark:hover:text-white"
             >
               {item.icon} {item.name}
             </Link>
