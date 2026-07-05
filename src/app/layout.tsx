@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import JsonLd from "@/components/JsonLd";
 import { SITE, absoluteUrl } from "@/lib/site";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -16,7 +16,29 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.name}`,
   },
   description: SITE.description,
-  keywords: ["AI tools", "free AI tools", "best AI tools 2026", "AI tools directory", "AI apps", "artificial intelligence software"],
+  keywords: [
+    "AI tools",
+    "best AI tools",
+    "free AI tools",
+    "AI tools directory",
+    "AI apps",
+    "artificial intelligence tools",
+    "AI software",
+    "AI writing tools",
+    "AI image generators",
+    "AI video generators",
+    "AI coding tools",
+    "AI SEO tools",
+    "AI design tools",
+    "AI productivity tools",
+    "AI research tools",
+    "best AI tools 2026",
+    "free AI apps",
+    "AI automation tools",
+    "chatgpt alternatives",
+    "claude alternatives",
+    "midjourney alternatives",
+  ],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
