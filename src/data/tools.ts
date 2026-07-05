@@ -32,6 +32,7 @@ export function getLogoCandidates(url: string): string[] {
   try {
     const parsed = new URL(url);
     const origin = `${parsed.protocol}//${parsed.host}`;
+    const hostname = parsed.hostname.replace(/^www\./, "");
 
     return [
       `${origin}/favicon.ico`,
@@ -40,6 +41,11 @@ export function getLogoCandidates(url: string): string[] {
       `${origin}/apple-touch-icon.png`,
       `${origin}/logo.svg`,
       `${origin}/logo.png`,
+      `${origin}/images/logo.png`,
+      `${origin}/static/logo.png`,
+      `${origin}/assets/logo.png`,
+      `https://logo.clearbit.com/${hostname}`,
+      `https://www.google.com/s2/favicons?sz=128&domain=${hostname}`,
     ];
   } catch {
     return [];

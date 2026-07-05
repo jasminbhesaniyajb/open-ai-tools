@@ -57,7 +57,7 @@ export default function ToolCard({ tool }: { tool: Tool }) {
               loading="lazy"
               decoding="async"
               onError={handleLogoError}
-              className="h-11 w-11 shrink-0 rounded-xl border border-slate-200 object-cover dark:border-white/10"
+              className="h-11 w-11 shrink-0 rounded-xl border border-slate-200 bg-white object-contain p-1.5 dark:border-white/10 dark:bg-slate-900"
             />
           )}
           <div>
