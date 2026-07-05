@@ -15,6 +15,7 @@ export interface Tool {
   category: string;
   pricing: Pricing;
   url: string;
+  logo?: string;
   features: string[];
   featured?: boolean;
   rating: number;
@@ -26,6 +27,24 @@ export const PRICING_LABELS: Record<Pricing, string> = {
   paid: "Paid",
   "free-trial": "Free trial",
 };
+
+export function getLogoCandidates(url: string): string[] {
+  try {
+    const parsed = new URL(url);
+    const origin = `${parsed.protocol}//${parsed.host}`;
+
+    return [
+      `${origin}/favicon.ico`,
+      `${origin}/favicon.svg`,
+      `${origin}/icon.png`,
+      `${origin}/apple-touch-icon.png`,
+      `${origin}/logo.svg`,
+      `${origin}/logo.png`,
+    ];
+  } catch {
+    return [];
+  }
+}
 
 export const CATEGORIES: Category[] = [
   { slug: "chat-assistants", name: "AI chat & assistants", icon: "💬", blurb: "Conversational AI assistants for questions, brainstorming, and everyday tasks." },
