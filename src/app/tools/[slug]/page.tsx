@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import PricingBadge from "@/components/PricingBadge";
 import ToolCard from "@/components/ToolCard";
+import ToolLogo from "@/components/ToolLogo";
 import { PRICING_LABELS, TOOLS, getCategory, getRelatedTools, getTool } from "@/data/tools";
 import { absoluteUrl } from "@/lib/site";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface Params {
   slug: string;
@@ -64,12 +65,7 @@ export default async function ToolPage({ params }: { params: Promise<Params> }) 
       {/* Hero */}
       <header className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex items-start gap-4">
-          <span
-            aria-hidden="true"
-            className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-400 text-2xl font-bold text-slate-900 dark:text-white"
-          >
-            {tool.name.charAt(0)}
-          </span>
+          <ToolLogo tool={tool} className="h-16 w-16" imageClassName="rounded-2xl" />
           <div>
             <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">{tool.name}</h1>
             <p className="mt-1.5 text-lg text-slate-600 dark:text-slate-400">{tool.tagline}</p>
